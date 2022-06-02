@@ -13,8 +13,14 @@ class Pokemon
     if (1..100).to_a.sample >= enemy.block_chance
       puts "#{@name} attacks #{enemy.name}!"
       damage = (10..@damage).to_a.sample
-      enemy.health -= damage
-      puts "#{@name}'s attack lands for #{damage} damage!"
+      if (1..10).to_a.sample > 8
+        damage = @damage + 2
+        enemy.health -= damage.to_i
+        puts "#{@name} lands a critical strike for #{damage.to_i} damage!"
+      else
+        enemy.health -= damage
+        puts "#{@name}'s attack lands for #{damage} damage!"
+      end
       if enemy.health <= 0
         return puts "#{enemy.name} has been defeated!"
       end
@@ -45,7 +51,7 @@ class Pokemon
     enemy.health -= 7
     puts "#{@name} uses a stun attack and deals 7 damage!"
     puts "#{enemy.name} has #{enemy.health} health remaining!"
-    if (1..10).to_a.sample > 7
+    if (1..10).to_a.sample > 6
       puts "#{enemy.name} has been stunned!"
       return 1
     end
