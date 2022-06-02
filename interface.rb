@@ -22,7 +22,7 @@ puts "*********************"
 puts "Pikachu vs. Charizard"
 puts "*********************"
 
-turn = 1
+turn = (1..2).to_a.sample.even? ? 1 : 2
 
 while pikachu.health > 0 && charizard.health > 0
   puts " "
